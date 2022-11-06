@@ -17,7 +17,6 @@ from os.path import expanduser
 import struct
 
 from ovos_plugin_manager.templates.hotwords import HotWordEngine
-from ovos_utils.log import LOG
 
 
 class PorcupineWakeword(HotWordEngine):
@@ -47,16 +46,10 @@ class PorcupineWakeword(HotWordEngine):
         self.has_found = False
         self.num_keywords = len(keyword_file_paths)
 
-
-        LOG.info(
-            'Loading Porcupine using keyword path {} and sensitivities {}'
-            .format(keyword_file_paths, sensitivities))
         self.porcupine = pvporcupine.create(
             access_key,
             keyword_paths=keyword_file_paths,
             sensitivities=sensitivities)
-
-        LOG.info('Loaded Porcupine')
 
     def update(self, chunk):
         """Update detection state from a chunk of audio data.
