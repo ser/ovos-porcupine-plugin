@@ -30,8 +30,6 @@ class PorcupineWakeword(HotWordEngine):
 
         try:
             import pvporcupine
-            from pvporcupine.util import (pv_library_path,
-                                          pv_model_path)
         except ImportError as err:
             raise Exception(
                 "Python bindings for Porcupine not found. "
